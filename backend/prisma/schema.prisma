@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Job {
+  id         String   @id @default(uuid())
+  taskName   String
+  payload    String   // Storing JSON as string for SQLite compatibility in simple setups, or use Prisma's Json type.
+  priority   String   // Low, Medium, High
+  status     String   @default("pending") // pending, running, completed, failed
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  webhookLog String?  // To store webhook response or error
+}

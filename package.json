@@ -1,0 +1,15 @@
+{
+  "name": "dotix-scheduler-root",
+  "version": "1.0.0",
+  "description": "Root package for Dotix Job Scheduler",
+  "scripts": {
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "build": "cd frontend && npm install --production=false && npm run build",
+    "build:backend": "cd backend && npm install --production=false && npm run build",
+    "build:all": "npm run build:backend && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
